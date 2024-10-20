@@ -22,11 +22,11 @@ const Navbar = () => {
       </div>
       <hr className='my-5 block md:hidden'/>
       <ul className="navbar-list ">
-        <li className="navbar-item">Work</li>
-        <li className="navbar-item">Instagram</li>
-        <li className="navbar-item">Contact</li>
-        <li className="navbar-item">Store</li>
-        <li className="navbar-item">Join Our Team</li>
+        <li className="navbar-item md:hover:bg-black">Work</li>
+        <li className="navbar-item md:hover:bg-black">Instagram</li>
+        <li className="navbar-item md:hover:bg-black">Contact</li>
+        <li className="navbar-item md:hover:bg-black">Store</li>
+        <li className="navbar-item md:hover:bg-black">Join Our Team</li>
       </ul>
     </div>
   );

@@ -16,7 +16,7 @@ const TextScroll = () => {
         'BACARDI'
     ];
 
-    const [currentIndex, setCurrentIndex] = useState(0); // Start at index 0
+    const [currentIndex, setCurrentIndex] = useState(-1); // Start at -1 for default left alignment
 
     useEffect(() => {
         const handleScroll = (event) => {
@@ -45,13 +45,13 @@ const TextScroll = () => {
     }, [texts.length]);
 
     return (
-        <div className="">
-            <div className="flex flex-col h-[300vh]">
+        <div className=" ">
+            <div className="flex flex-col h-[200vh]">
                 {texts.map((text, index) => (
                     <div
                         key={index}
                         className={`my-2 text-[2.5rem] transition-all duration-500 text-left ${
-                            index <= currentIndex ? 'text-right' : 'text-left'
+                            index <= currentIndex ? 'text-right' : 'text-left' // Change to right when in view
                         }`}
                     >
                         {text}
