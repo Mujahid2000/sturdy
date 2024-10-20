@@ -51,7 +51,7 @@ const Banner = () => {
   return (
     <div className="relative w-full pt-28" onClick={() => onMute()}>
       <video
-        src={videoBg}
+        src='https://player.vimeo.com/progressive_redirect/playback/943453069/rendition/1080p/file.mp4?loc=external&signature=a135f50c1dddc6d892218e3dcb0487865deeca880e0d2e858f584f6e02798f9e'
         autoPlay
         loop
         muted={isMuted}
