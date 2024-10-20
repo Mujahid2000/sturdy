@@ -16,50 +16,43 @@ const TextScroll = () => {
         'BACARDI'
     ];
 
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isScrolling, setIsScrolling] = useState(false);
-
-    const handleScroll = (event) => {
-        if (isScrolling) return; // Prevent further scrolling actions
-
-        setIsScrolling(true);
-        // Check the direction of the scroll
-        if (event.deltaY > 0 && currentIndex < texts.length - 1) {
-            setCurrentIndex(prevIndex => prevIndex + 1);
-        } else if (event.deltaY < 0 && currentIndex > 0) {
-            setCurrentIndex(prevIndex => prevIndex - 1);
-        }
-
-        // Set a timeout to re-enable scrolling after processing
-        setTimeout(() => {
-            setIsScrolling(false);
-        }, 500); // Delay to allow the scroll event to finish processing
-
-        // Prevent default scroll behavior
-        event.preventDefault();
-    };
+    const [currentIndex, setCurrentIndex] = useState(0); // Start at index 0
 
     useEffect(() => {
+        const handleScroll = (event) => {
+            // Check the direction of the scroll
+            if (event.deltaY > 0) {
+                // Scroll down
+                setCurrentIndex(prevIndex => 
+                    prevIndex < texts.length - 1 ? prevIndex + 1 : 0 // Wrap to 0
+                );
+                event.preventDefault(); // Prevent default scroll behavior
+            } else if (event.deltaY < 0) {
+                // Scroll up
+                setCurrentIndex(prevIndex => 
+                    prevIndex > 0 ? prevIndex - 1 : texts.length - 1 // Wrap to last index
+                );
+                event.preventDefault(); // Prevent default scroll behavior
+            }
+        };
+
         window.addEventListener('wheel', handleScroll);
 
         // Cleanup event listener on unmount
         return () => {
             window.removeEventListener('wheel', handleScroll);
         };
-    }, [currentIndex, isScrolling]);
+    }, [texts.length]);
 
     return (
-        <div className="h-screen flex justify-center items-center overflow-hidden">
-            <div className="text-[2.5rem]">
+        <div className="">
+            <div className="flex flex-col h-[300vh]">
                 {texts.map((text, index) => (
                     <div
                         key={index}
-                        className={`my-2 transition-all duration-500`}
-                        style={{
-                            textAlign: currentIndex === index ? 'right' : 'left',
-                            
-                            pointerEvents: currentIndex === index ? 'none' : 'none', // Disable pointer events for inactive texts
-                        }}
+                        className={`my-2 text-[2.5rem] transition-all duration-500 text-left ${
+                            index <= currentIndex ? 'text-right' : 'text-left'
+                        }`}
                     >
                         {text}
                     </div>
