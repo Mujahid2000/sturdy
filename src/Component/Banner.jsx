@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
-import videoBg from '../assets/bannerBG.mp4';
 import logo from '../assets/logo.png';
-import './Banner.css';
+import './banner.css';
 import '../Layout/Navbar.css';
 import { MyContext } from '../StateManage/StateMangeContext';
 import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa'; // Import sound icons
