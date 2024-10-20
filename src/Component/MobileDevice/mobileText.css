@@ -1,0 +1,19 @@
+/* text.css */
+.scroll-container {
+  width: 100vw; /* Full viewport width */
+  overflow: hidden; /* Hide overflow on the sides */
+  white-space: nowrap; /* Prevent the text from wrapping */
+}
+
+.scrolling-text {
+  display: flex; /* Horizontally align text items */
+  flex-direction: column;
+  transition: transform 0.2s ease-out; /* Smooth scrolling effect */
+}
+
+.scroll-item {
+  font-size: 2rem; /* Adjust as necessary */
+  padding: 0 20px; /* Add space between text items */
+  display: inline-block; /* Keep items on a single line */
+  color: black;
+}
